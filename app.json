@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "spaceX-app",
+    "slug": "spaceX-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.devsamuel06.spaceXapp"
+    },
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "b07b73a3-f81a-4daa-93d7-58c33497691f"
+      }
+    }
+  }
+}
