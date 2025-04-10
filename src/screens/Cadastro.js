@@ -60,9 +60,9 @@ export default class Cadastro extends Component {
         <Text style={styles.title}>Cadastre-se</Text>
         <View style={styles.body}>
           <TextInput style={styles.input} placeholder="Nome" onChangeText={(user) => this.setState({ user })} placeholderTextColor="#888" />
-          <TextInput style={styles.input} placeholder="Telefone" onChangeText={(phone) => this.setState({ phone })} placeholderTextColor="#888" />
-          <TextInput style={styles.input} placeholder="CPF" onChangeText={(cpf) => this.setState({ cpf })} placeholderTextColor="#888" />
-          <TextInput style={styles.input} placeholder="Email" onChangeText={(email) => this.setState({ email })} placeholderTextColor="#888" />
+          <TextInput style={styles.input} placeholder="Telefone" keyboardType="phone-pad" maxLength={11} onChangeText={(phone) => this.setState({ phone })} placeholderTextColor="#888" />
+          <TextInput style={styles.input} placeholder="CPF" keyboardType="number-pad" maxLength={11} onChangeText={(cpf) => this.setState({ cpf })} placeholderTextColor="#888" />
+          <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" onChangeText={(email) => this.setState({ email })} placeholderTextColor="#888" />
           <TextInput style={styles.input} placeholder="Curso" onChangeText={(curso) => this.setState({ curso })} placeholderTextColor="#888" />
           <TextInput style={styles.input} placeholder="Senha" secureTextEntry onChangeText={(password) => this.setState({ password })} placeholderTextColor="#888" />
           <TextInput style={styles.input} placeholder="Confirme a senha" secureTextEntry onChangeText={(confirmedPassword) => this.setState({ confirmedPassword })} placeholderTextColor="#888" />

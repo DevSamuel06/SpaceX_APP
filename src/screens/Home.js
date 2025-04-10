@@ -74,7 +74,7 @@ const Home = () => {
       {/* Top bar com ícone de lista */}
       <View style={styles.topBar}>
         <Text style={styles.title}>Pesquisar Missões 🚀</Text>
-        <TouchableOpacity onPress={goToSaved}>
+        <TouchableOpacity onPress={goToSaved} >
           <Ionicons name="bookmark-outline" size={28} color="#fff" />
         </TouchableOpacity>
       </View>
@@ -86,6 +86,7 @@ const Home = () => {
         placeholderTextColor="#aaa"
         value={search}
         onChangeText={handleSearch}
+        keyboardType="web-search"
       />
 
       {/* Cards da API */}

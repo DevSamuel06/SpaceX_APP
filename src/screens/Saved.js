@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  SafeAreaView,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
@@ -34,13 +35,10 @@ const Saved = () => {
   }, [navigation]);
 
   const deleteCard = async (id) => {
-    console.log("Remover card com ID:", id); // Verificar se está chegando aqui
     const updatedCards = savedCards.filter((item) => item.id !== id);
     setSavedCards(updatedCards);
     await AsyncStorage.setItem("savedLaunches", JSON.stringify(updatedCards));
   };
-  
-
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -62,7 +60,6 @@ const Saved = () => {
         </View>
       </TouchableOpacity>
 
-      {/* Botão de excluir */}
       <TouchableOpacity onPress={() => deleteCard(item.id)} style={styles.deleteButton}>
         <Ionicons name="trash-outline" size={24} color="#e50914" />
       </TouchableOpacity>
@@ -70,40 +67,41 @@ const Saved = () => {
   );
 
   return (
-    <View style={styles.container}>
-      {/* Botão de voltar */}
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-back" size={28} color="#fff" />
-      </TouchableOpacity>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={28} color="#fff" />
+        </TouchableOpacity>
 
-      <Text style={styles.title}>Meus Lançamentos Salvos</Text>
+        <Text style={styles.title}>Meus Lançamentos Salvos</Text>
 
-      {savedCards.length === 0 ? (
-        <Text style={styles.empty}>Nenhum card salvo.</Text>
-      ) : (
-        <FlatList
-          data={savedCards}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-          contentContainerStyle={{ paddingBottom: 20 }}
-        />
-      )}
-    </View>
+        {savedCards.length === 0 ? (
+          <Text style={styles.empty}>Nenhum card salvo.</Text>
+        ) : (
+          <FlatList
+            data={savedCards}
+            keyExtractor={(item) => item.id}
+            renderItem={renderItem}
+            contentContainerStyle={{ paddingBottom: 20 }}
+          />
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: "#121212",
+  },
+  container: {
+    flex: 1,
     padding: 16,
-    paddingTop: 50,
   },
   backButton: {
-    position: "absolute",
-    top: 40,
-    left: 20,
-    zIndex: 1,
+    marginTop:10,
+    marginBottom: 10,
   },
   title: {
     fontSize: 26,
@@ -111,7 +109,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    marginTop:15,
   },
   empty: {
     color: "#aaa",
